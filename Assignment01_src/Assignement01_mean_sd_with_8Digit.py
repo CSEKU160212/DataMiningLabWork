@@ -4,10 +4,11 @@ import numpy as np
 import pandas as pd
 import re
 
-os.chdir("/home/cseku160212/PycharmProjects/DataMining/Train and test ETH 80 dataset/TrainETH80data2952")
+
+os.chdir(r"/home/cseku160212/PycharmProjects/DataMining/Train and test ETH 80 dataset/TrainETH80data2952")
 allImages = sorted(os.listdir("."))
 
-outputDir = "/home/cseku160212/PycharmProjects/DataMining/Assignment01Output/"
+outputDir = r"/home/cseku160212/PycharmProjects/DataMining/Assignment01Output/"
 
 imageLabel = []
 MeanList = []
@@ -26,18 +27,11 @@ for eachImage in allImages:
 
     sd = np.std(imageIntensityArray)
     standardDeviationList.append(sd)
-    print("For Image", eachImage, "Mean = ", mean, "\tStandard Deviation: ", sd)
 
 
 os.chdir(outputDir)
-
 df = pd.DataFrame({'Label': imageLabel, 'Mean': MeanList, 'Standard Deviation': standardDeviationList})
-
+df.set_index('Label', inplace=True, bold=False)
 writer = pd.ExcelWriter('Assignment01OutputWith8Digit.xlsx', engine='xlsxwriter')
-
 df.to_excel(writer, sheet_name='Sheet1')
-
 writer.save()
-
-
-

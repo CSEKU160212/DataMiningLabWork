@@ -32,6 +32,7 @@ for eachImage in allImages:
 os.chdir(outputDir)
 
 df = pd.DataFrame({'Label': imageLabel, 'Mean': MeanList, 'Standard Deviation': standardDeviationList})
+df.set_index('Label', inplace=True)
 
 writer = pd.ExcelWriter('Assignment01Output.xlsx', engine='xlsxwriter')
 

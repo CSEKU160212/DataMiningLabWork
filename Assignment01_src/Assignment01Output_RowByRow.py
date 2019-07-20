@@ -7,7 +7,7 @@ import xlsxwriter
 os.chdir("/home/cseku160212/PycharmProjects/DataMining/Train and test ETH 80 dataset/TrainETH80data2952")
 allImages = sorted(os.listdir("."))
 
-outputDir = "/home/cseku160212/PycharmProjects/DataMining/Assignment01Output/"
+outputDir = r"/home/cseku160212/PycharmProjects/DataMining"
 os.chdir(outputDir)
 
 workbook = xlsxwriter.Workbook("Assignment01_Mean_SD_OneByOneInsertion.xlsx")
