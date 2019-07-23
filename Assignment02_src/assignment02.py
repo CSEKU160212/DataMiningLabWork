@@ -137,7 +137,7 @@ def recognition_test_image():
             objectClass = label
             meanIndex = index
         index += 1
-
+    print("Test Object Type:",labelList[meanIndex])
     message = "Test Object Type: "+objectClass
     display.configure(text=message)
     messagebox.showinfo("Recognition Message", "Image Recognized Successfully")
