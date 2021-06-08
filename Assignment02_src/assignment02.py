@@ -9,7 +9,6 @@ import tkinter as tk
 from tkinter import filedialog
 from tkinter import messagebox
 import pandas as pd
-from scipy import stats
 
 
 def load_training_folder():
@@ -62,9 +61,6 @@ def extract_features_and_store_in_database():
             min = np.min(imageIntensityArray)
             max = np.max(imageIntensityArray)
             midrange = (min + max) / 2
-
-            mode = stats.mode(imageIntensityArray)
-            print("The mode is {}".format(mode[0]))
 
             os.chdir(outputDir)
             worksheet.write(row, column, label[0])
@@ -127,14 +123,9 @@ def load_query_image():
             maxTest = np.max(testImageDataArray)
             midrangeTestImage = (minTest + maxTest) / 2
 
-
-            mode = stats.mode(testImageDataArray)
-            print("The mode is {}".format(mode[0]))
-
             print("New Image:\nMean:", meanTestImage, "Median:", medianTestImage, "Midrange:", midrangeTestImage)
             messagebox.showinfo("Test Image Selector Message", "Test Image Selected Successfully")
             print(mode)
-
 
 def recognition_test_image():
     global meanTestImage
@@ -163,7 +154,7 @@ def recognition_test_image():
 
 #Main program Starts here
 #global variables
-
+global training_folder_path, load_features_file, labelList, meanList, medianList, midrangeList, meanTestImage, medianTestImage, midrangeTestImage
 training_folder_path = ""
 load_features_file = ""
 labelList = []
